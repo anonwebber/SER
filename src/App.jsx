@@ -455,8 +455,8 @@ function App() {
 
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full flex items-center justify-center text-5xl border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
-                🚀
+              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
+                <img src="/media/elon_musk_royal_society.jpg" alt="E. Musk" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-lg">E. Musk</h3>
               <p className="text-amber-500 text-sm font-medium">Chief Yoinking Officer</p>
@@ -464,8 +464,8 @@ function App() {
             </div>
 
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full flex items-center justify-center text-5xl border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
-                🐕
+              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
+                <img src="/media/kabosu1.jpg" alt="Kabosu" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-lg">Kabosu</h3>
               <p className="text-amber-500 text-sm font-medium">Director of Vibes</p>
@@ -473,8 +473,8 @@ function App() {
             </div>
 
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full flex items-center justify-center text-5xl border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
-                🤖
+              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
+                <img src="/media/optimus1.png" alt="Optimus" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-lg">Optimus</h3>
               <p className="text-amber-500 text-sm font-medium">Head of Automation</p>
