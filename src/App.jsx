@@ -126,12 +126,13 @@ function App() {
 
       {/* Navigation - Sticky, Minimal */}
       <nav className="sticky top-0 z-50 bg-[#0a0f1a]/95 backdrop-blur-sm border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-700 rounded flex items-center justify-center font-serif font-bold text-lg animate-pulse">
               S
             </div>
-            <span className="font-serif text-xl tracking-wide">Strategic Elon Reserve</span>
+            <span className="font-serif text-base md:text-xl tracking-wide hidden sm:inline">Strategic Elon Reserve</span>
+            <span className="font-serif text-base tracking-wide sm:hidden">$SER</span>
             <span className="hidden sm:inline-block text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full border border-green-500/30">
               SAFU ✓
             </span>
@@ -139,8 +140,7 @@ function App() {
           <div className="hidden md:flex items-center gap-8 text-sm text-gray-400">
             <a href="#about" className="hover:text-white transition-colors">About</a>
             <a href="#strategy" className="hover:text-white transition-colors">Strategy</a>
-            <a href="#metrics" className="hover:text-white transition-colors">Performance</a>
-            <a href="#pfp" className="hover:text-white transition-colors">PFP</a>
+                        <a href="#pfp" className="hover:text-white transition-colors">PFP</a>
             <a href="#merch" className="hover:text-white transition-colors">Merch</a>
             <a
               href="https://pump.fun"
@@ -153,8 +153,8 @@ function App() {
       </nav>
 
       {/* Hero - Authority meets Degen */}
-      <header className="pt-20 pb-24 px-8 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <header className="pt-10 pb-12 md:pt-16 md:pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="text-amber-500 text-sm tracking-[0.3em] uppercase font-medium">
@@ -215,7 +215,7 @@ function App() {
           </div>
 
           {/* Logo with glow for transparent PNG */}
-          <div className="relative flex items-center justify-center min-h-[400px]">
+          <div className="relative flex items-center justify-center min-h-[280px] md:min-h-[350px]">
             {/* Glow effects - layered for depth */}
             <div className="absolute w-96 h-96 bg-amber-500/15 rounded-full blur-[100px]"></div>
             <div className="absolute w-72 h-72 bg-amber-600/25 rounded-full blur-[60px] animate-pulse"></div>
@@ -225,7 +225,7 @@ function App() {
             <img
               src="/media/pfp.png"
               alt="$SER"
-              className="relative z-10 w-80 h-80 object-contain drop-shadow-[0_0_60px_rgba(251,191,36,0.4)] hover:scale-110 transition-transform duration-500"
+              className="relative z-10 w-52 h-52 md:w-72 md:h-72 object-contain drop-shadow-[0_0_60px_rgba(251,191,36,0.4)] hover:scale-110 transition-transform duration-500"
               style={{ background: 'transparent' }}
             />
 
@@ -242,7 +242,7 @@ function App() {
 
       {/* Key Metrics Bar - Live updating */}
       <section className="border-y border-white/10 bg-[#0d1320]">
-        <div className="max-w-7xl mx-auto px-8 py-12 grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-6 md:py-8 grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
           <div className="text-center">
             <div className="font-serif text-3xl md:text-4xl text-amber-500 mb-2 tabular-nums">
               {formatNumber(aum)}
@@ -287,8 +287,8 @@ function App() {
       </section>
 
       {/* About Section - Serious meets Silly */}
-      <section id="about" className="py-24 px-8 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16">
+      <section id="about" className="py-10 md:py-14 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-10">
           <div>
             <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
               About the Fund
@@ -323,9 +323,9 @@ function App() {
       </section>
 
       {/* Trust Badges - Satirical */}
-      <section className="py-12 px-8 bg-[#0d1320] border-y border-white/5">
+      <section className="py-6 md:py-8 px-4 md:px-8 bg-[#0d1320] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-gray-500 text-sm">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-gray-500 text-xs md:text-sm">
             <div className="flex items-center gap-2">
               <span className="text-green-500">✓</span> Audited by Trust Me Bro LLC
             </div>
@@ -342,108 +342,108 @@ function App() {
         </div>
       </section>
 
-      {/* Strategy Section */}
-      <section id="strategy" className="py-24 px-8 bg-[#0d1320]">
+      {/* Strategy & Tokenomics - Side by Side */}
+      <section id="strategy" className="py-10 md:py-14 px-4 md:px-8 bg-[#0d1320]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
-              Investment Strategy
-            </p>
-            <h2 className="font-serif text-4xl mb-2">
-              The $SER Methodology
-            </h2>
-            <p className="text-gray-500">Three steps to generational wealth (or a funny story)</p>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-10">
+            {/* Investment Strategy */}
+            <div>
+              <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
+                Investment Strategy
+              </p>
+              <h2 className="font-serif text-3xl mb-2">
+                The $SER Methodology
+              </h2>
+              <p className="text-gray-500 mb-4 md:mb-6">Three steps to generational wealth</p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-[#0a0f1a] p-8 border border-white/5 hover:border-amber-500/30 transition-colors group">
-              <div className="text-amber-500 text-5xl font-serif mb-4 group-hover:scale-110 transition-transform">01</div>
-              <h3 className="font-serif text-xl mb-3">Fee Capture Protocol</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                Systematic extraction of 0.05-0.95% transaction fees from pump.fun activity.
-                Our proprietary "yoinking" algorithm operates 24/7 with zero human intervention.
-              </p>
-              <p className="text-amber-500/70 text-xs font-mono">
-                // like a vacuum for degen fees
-              </p>
+              <div className="space-y-4">
+                <div className="bg-[#0a0f1a] p-6 border border-white/5 hover:border-amber-500/30 transition-colors group">
+                  <div className="flex items-start gap-4">
+                    <div className="text-amber-500 text-3xl font-serif group-hover:scale-110 transition-transform">01</div>
+                    <div>
+                      <h3 className="font-serif text-lg mb-2">Fee Capture Protocol</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Systematic extraction of transaction fees from pump.fun activity via proprietary "yoinking" algorithm.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[#0a0f1a] p-6 border border-white/5 hover:border-amber-500/30 transition-colors group">
+                  <div className="flex items-start gap-4">
+                    <div className="text-amber-500 text-3xl font-serif group-hover:scale-110 transition-transform">02</div>
+                    <div>
+                      <h3 className="font-serif text-lg mb-2">TSLAx Accumulation</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Captured SOL converts to TSLAx through Jupiter, building tokenized Tesla equity reserves.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[#0a0f1a] p-6 border border-white/5 hover:border-amber-500/30 transition-colors group">
+                  <div className="flex items-start gap-4">
+                    <div className="text-amber-500 text-3xl font-serif group-hover:scale-110 transition-transform">03</div>
+                    <div>
+                      <h3 className="font-serif text-lg mb-2">Stakeholder Distribution</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        TSLAx airdropped to $SER holders via on-chain snapshots. No claims. Just Tesla in your wallet.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-[#0a0f1a] p-8 border border-white/5 hover:border-amber-500/30 transition-colors group">
-              <div className="text-amber-500 text-5xl font-serif mb-4 group-hover:scale-110 transition-transform">02</div>
-              <h3 className="font-serif text-xl mb-3">TSLAx Accumulation</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                Captured SOL is converted to TSLAx through Jupiter aggregation routes,
-                building a reserve of tokenized Tesla equity within the fund treasury.
+            {/* Fund Structure / Tokenomics */}
+            <div>
+              <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
+                Fund Structure
               </p>
-              <p className="text-amber-500/70 text-xs font-mono">
-                // stacking sats but make it tesla
-              </p>
-            </div>
+              <h2 className="font-serif text-3xl mb-2">
+                Tokenomics & Mechanics
+              </h2>
+              <p className="text-gray-500 mb-4 md:mb-6">The numbers that matter</p>
 
-            <div className="bg-[#0a0f1a] p-8 border border-white/5 hover:border-amber-500/30 transition-colors group">
-              <div className="text-amber-500 text-5xl font-serif mb-4 group-hover:scale-110 transition-transform">03</div>
-              <h3 className="font-serif text-xl mb-3">Stakeholder Distribution</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                TSLAx holdings are airdropped to $SER holders via on-chain snapshots.
-                No claims required. No friction. Just Tesla in your wallet.
-              </p>
-              <p className="text-amber-500/70 text-xs font-mono">
-                // free money glitch activated
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Fund Structure / Tokenomics */}
-      <section className="py-24 px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
-            Fund Structure
-          </p>
-          <h2 className="font-serif text-4xl">
-            Tokenomics & Mechanics
-          </h2>
-        </div>
-
-        <div className="max-w-3xl mx-auto">
-          <div className="border border-white/10 divide-y divide-white/10 bg-[#0d1320]/50">
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Total Supply</span>
-              <span className="text-right font-mono">1,000,000,000 $SER</span>
-            </div>
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Transaction Tax</span>
-              <span className="text-right font-mono text-green-400">0% (Buy & Sell) 🎉</span>
-            </div>
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Revenue Source</span>
-              <span className="text-right font-mono">Pump.fun Fee Yoinking</span>
-            </div>
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Distribution Asset</span>
-              <span className="text-right font-mono">TSLAx (Real Tesla Exposure)</span>
-            </div>
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Liquidity</span>
-              <span className="text-right font-mono text-green-400">Locked Forever 🔒</span>
-            </div>
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Rug Probability</span>
-              <span className="text-right font-mono text-green-400">0.00% (mathematically impossible)</span>
-            </div>
-            <div className="grid grid-cols-2 p-6 hover:bg-white/5 transition-colors">
-              <span className="text-gray-500">Contract</span>
-              <span className="text-right font-mono text-amber-500">[CA COMING SOON]</span>
+              <div className="border border-white/10 divide-y divide-white/10 bg-[#0a0f1a]">
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Total Supply</span>
+                  <span className="text-right font-mono">1,000,000,000 $SER</span>
+                </div>
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Transaction Tax</span>
+                  <span className="text-right font-mono text-green-400">0% (Buy & Sell) 🎉</span>
+                </div>
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Revenue Source</span>
+                  <span className="text-right font-mono">Pump.fun Fee Yoinking</span>
+                </div>
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Distribution Asset</span>
+                  <span className="text-right font-mono">TSLAx (Real Tesla)</span>
+                </div>
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Liquidity</span>
+                  <span className="text-right font-mono text-green-400">Locked Forever 🔒</span>
+                </div>
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Rug Probability</span>
+                  <span className="text-right font-mono text-green-400">0.00%</span>
+                </div>
+                <div className="grid grid-cols-2 p-5 hover:bg-white/5 transition-colors">
+                  <span className="text-gray-500">Contract</span>
+                  <span className="text-right font-mono text-amber-500">[CA COMING SOON]</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Leadership - Full Meme Mode */}
-      <section id="leadership" className="py-24 px-8 bg-[#0d1320]">
+      <section id="leadership" className="py-10 md:py-14 px-4 md:px-8 bg-[#0d1320]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-10">
             <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
               Leadership
             </p>
@@ -453,9 +453,9 @@ function App() {
             <p className="text-gray-500">The most qualified team in memetic finance</p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
+              <div className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-3 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
                 <img src="/media/elon_musk_royal_society.jpg" alt="E. Musk" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-lg">E. Musk</h3>
@@ -464,7 +464,7 @@ function App() {
             </div>
 
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
+              <div className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-3 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
                 <img src="/media/kabosu1.jpg" alt="Kabosu" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-lg">Kabosu</h3>
@@ -473,7 +473,7 @@ function App() {
             </div>
 
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
+              <div className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-3 bg-gradient-to-br from-amber-500/20 to-amber-900/20 rounded-full overflow-hidden border border-amber-500/30 group-hover:scale-110 group-hover:border-amber-500 transition-all">
                 <img src="/media/optimus1.png" alt="Optimus" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-serif text-lg">Optimus</h3>
@@ -482,7 +482,7 @@ function App() {
             </div>
 
             <div className="text-center group">
-              <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-green-500/20 to-green-900/20 rounded-full flex items-center justify-center text-5xl border border-green-500/30 group-hover:scale-110 group-hover:border-green-500 transition-all">
+              <div className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-3 bg-gradient-to-br from-green-500/20 to-green-900/20 rounded-full flex items-center justify-center text-3xl md:text-4xl border border-green-500/30 group-hover:scale-110 group-hover:border-green-500 transition-all">
                 🫵
               </div>
               <h3 className="font-serif text-lg">You, Anon</h3>
@@ -493,60 +493,11 @@ function App() {
         </div>
       </section>
 
-      {/* Performance Metrics */}
-      <section id="metrics" className="py-24 px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
-            Performance
-          </p>
-          <h2 className="font-serif text-4xl">
-            Fund Metrics
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="bg-[#0d1320] p-8 border border-white/5 hover:border-green-500/30 transition-colors">
-            <div className="flex justify-between items-start mb-4">
-              <span className="text-gray-500 text-sm">Projected YTD Return</span>
-              <span className="text-green-500 text-sm">↑ To the Moon</span>
-            </div>
-            <div className="font-serif text-5xl text-green-500 mb-2">+420.69%</div>
-            <p className="text-gray-600 text-xs">vs. S&P 500: lmao who cares</p>
-          </div>
-
-          <div className="bg-[#0d1320] p-8 border border-white/5 hover:border-amber-500/30 transition-colors">
-            <div className="flex justify-between items-start mb-4">
-              <span className="text-gray-500 text-sm">TSLAx Distributed</span>
-              <span className="text-amber-500 text-sm">Ongoing 🔄</span>
-            </div>
-            <div className="font-serif text-5xl mb-2">69,420</div>
-            <p className="text-gray-600 text-xs">Tokens to 1,337 Diamond Hands</p>
-          </div>
-
-          <div className="bg-[#0d1320] p-8 border border-white/5 hover:border-amber-500/30 transition-colors">
-            <div className="flex justify-between items-start mb-4">
-              <span className="text-gray-500 text-sm">Holder Count</span>
-              <span className="text-green-500 text-sm">↑ Multiplying</span>
-            </div>
-            <div className="font-serif text-5xl mb-2">8,008</div>
-            <p className="text-gray-600 text-xs">Certified Diamond Hand Degens</p>
-          </div>
-
-          <div className="bg-[#0d1320] p-8 border border-white/5 hover:border-green-500/30 transition-colors">
-            <div className="flex justify-between items-start mb-4">
-              <span className="text-gray-500 text-sm">Rug Risk Assessment</span>
-              <span className="text-gray-500 text-sm">Audited by Vibes</span>
-            </div>
-            <div className="font-serif text-5xl text-green-500 mb-2">0.00%</div>
-            <p className="text-gray-600 text-xs">LP Locked · Contract Renounced · Dev Doxxed (to his mom)</p>
-          </div>
-        </div>
-      </section>
 
       {/* Merchandise - Investor Apparel Collection */}
-      <section id="merch" className="py-24 px-8 bg-[#0d1320]">
+      <section id="merch" className="py-10 md:py-14 px-4 md:px-8 bg-[#0d1320]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-10">
             <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
               Investor Relations
             </p>
@@ -556,7 +507,7 @@ function App() {
             <p className="text-gray-500">Flex your portfolio IRL. Not financial advice, but definitely fashion advice.</p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {/* Hoodie */}
             <div className="group bg-[#0a0f1a] border border-white/5 hover:border-amber-500/50 transition-all rounded overflow-hidden">
               <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
@@ -658,7 +609,7 @@ function App() {
           </div>
 
           {/* Merch Benefits */}
-          <div className="mt-12 grid md:grid-cols-3 gap-6 text-center">
+          <div className="mt-6 md:mt-8 grid grid-cols-3 gap-2 md:gap-4 text-center">
             <div className="p-4">
               <div className="text-2xl mb-2">🚀</div>
               <h4 className="font-medium text-sm mb-1">Holder Discount</h4>
@@ -679,9 +630,9 @@ function App() {
       </section>
 
       {/* PFP Generator */}
-      <section id="pfp" className="py-24 px-8">
+      <section id="pfp" className="py-10 md:py-14 px-4 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6 md:mb-8">
             <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
               Identity Protocol
             </p>
@@ -691,7 +642,7 @@ function App() {
             <p className="text-gray-500">Rep the reserve. Make your X profile go hard.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
             {/* Upload & Preview */}
             <div className="bg-[#0d1320] border border-white/10 rounded-lg p-6">
               {!pfpImage ? (
@@ -760,7 +711,7 @@ function App() {
       </section>
 
       {/* How to Invest - Degen Guide */}
-      <section className="py-24 px-8 bg-[#0d1320]">
+      <section className="py-10 md:py-14 px-4 md:px-8 bg-[#0d1320]">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-amber-500 text-sm tracking-[0.3em] uppercase mb-4">
             Investor Onboarding
@@ -768,9 +719,9 @@ function App() {
           <h2 className="font-serif text-4xl mb-2">
             How to Gain Exposure
           </h2>
-          <p className="text-gray-500 mb-12">(Even your grandma could do this)</p>
+          <p className="text-gray-500 mb-6 md:mb-8">(Even your grandma could do this)</p>
 
-          <div className="grid md:grid-cols-3 gap-8 text-left mb-12">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6 text-left mb-6 md:mb-8">
             <div className="bg-[#0a0f1a] p-6 border border-white/5 hover:border-amber-500/30 transition-colors">
               <div className="text-amber-500 font-serif text-3xl mb-3">I.</div>
               <h3 className="font-medium mb-2">Get a Wallet</h3>
@@ -807,9 +758,9 @@ function App() {
       </section>
 
       {/* Footer - Compliance Parody */}
-      <footer className="py-16 px-8 border-t border-white/5">
+      <footer className="py-8 md:py-12 px-4 md:px-8 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded flex items-center justify-center font-serif font-bold text-sm">
