@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$SER // STRATEGIC ELON RESERVE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-panel: #111111;
+      --tesla-red: #e82127;
+      --tesla-silver: #c0c0c0;
+      --electric-blue: #00d4ff;
+      --neon-green: #39ff14;
+      --gold: #ffd700;
+      --pixel-border: #333;
+      --text: #e0e0e0;
+      --text-dim: #666;
+    }
+
+    body {
+      font-family: 'VT323', monospace;
+      background: var(--bg-dark);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Scanline Effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      z-index: 9999;
+    }
+
+    /* Tesla-styled Grid Background */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(232, 33, 39, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 33, 39, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes gridMove {
+      0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+      100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+    }
+
+    /* Glowing orbs - Tesla themed */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      z-index: -1;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .orb-1 { width: 400px; height: 400px; background: var(--tesla-red); top: -100px; left: -100px; }
+    .orb-2 { width: 300px; height: 300px; background: var(--electric-blue); bottom: -50px; right: -50px; animation-delay: -5s; }
+    .orb-3 { width: 200px; height: 200px; background: var(--gold); top: 50%; left: 50%; animation-delay: -2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -30px); }
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 1.5rem 0 1rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--tesla-red);
+      text-shadow:
+        0 0 10px var(--tesla-red),
+        0 0 20px var(--tesla-red),
+        0 0 40px var(--tesla-red);
+      letter-spacing: 4px;
+      animation: flicker 3s infinite;
+    }
+
+    .logo span {
+      color: var(--electric-blue);
+      text-shadow:
+        0 0 10px var(--electric-blue),
+        0 0 20px var(--electric-blue),
+        0 0 40px var(--electric-blue);
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      92% { opacity: 1; }
+      93% { opacity: 0.8; }
+      94% { opacity: 1; }
+      95% { opacity: 0.9; }
+      96% { opacity: 1; }
+    }
+
+    .tagline {
+      font-family: 'Space Mono', monospace;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .ca-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--tesla-red);
+      background: rgba(232, 33, 39, 0.1);
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--tesla-red);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ca-link:hover {
+      background: rgba(232, 33, 39, 0.2);
+      box-shadow: 0 0 15px rgba(232, 33, 39, 0.4);
+    }
+
+    .ca-link.copied {
+      background: rgba(57, 255, 20, 0.2);
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+    }
+
+    .x-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--text-dim);
+      color: var(--text);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .x-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--text);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ELON/ROCKET ZONE */
+    .mascot-zone {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0 2rem 0;
+      min-height: 280px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1rem;
+    }
+
+    .pixel-rocket {
+      width: 240px;
+      height: 260px;
+      position: relative;
+      image-rendering: pixelated;
+      flex-shrink: 0;
+    }
+
+    /* Rocket animations */
+    .pixel-rocket.idle { animation: hover 2s ease-in-out infinite; }
+    .pixel-rocket.cooking { animation: shake 0.2s ease-in-out infinite; }
+    .pixel-rocket.airdropping { animation: fly-down 1.5s ease-in-out infinite; }
+    .pixel-rocket.counting { animation: scan 2s ease-in-out infinite; }
+    .pixel-rocket.celebrating { animation: blast-off 0.5s ease-in-out infinite; }
+    .pixel-rocket.error { animation: glitch 0.1s infinite; }
+
+    @keyframes hover {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      75% { transform: translateX(3px); }
+    }
+
+    @keyframes fly-down {
+      0%, 100% { transform: translateY(-20px); }
+      50% { transform: translateY(10px); }
+    }
+
+    @keyframes scan {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+
+    @keyframes blast-off {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); filter: hue-rotate(0deg); }
+      25% { transform: translate(-3px, 3px); filter: hue-rotate(90deg); }
+      50% { transform: translate(3px, -3px); filter: hue-rotate(180deg); }
+      75% { transform: translate(-3px, -3px); filter: hue-rotate(270deg); }
+      100% { transform: translate(0); filter: hue-rotate(360deg); }
+    }
+
+    /* Rocket Sprite using CSS */
+    .rocket-sprite {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      filter: drop-shadow(0 0 20px var(--tesla-red));
+    }
+
+    /* SPEECH BUBBLE */
+    .speech-bubble {
+      background: var(--bg-panel);
+      border: 4px solid var(--tesla-red);
+      padding: 1.2rem 1.5rem;
+      max-width: 420px;
+      min-width: 300px;
+      position: relative;
+      font-size: 1.3rem;
+      text-align: left;
+      align-self: center;
+      box-shadow:
+        0 0 20px rgba(232, 33, 39, 0.3),
+        inset 0 0 20px rgba(232, 33, 39, 0.1);
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 12px solid transparent;
+      border-left-color: var(--tesla-red);
+    }
+
+    /* Status Bar */
+    .status-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(90deg, var(--bg-dark) 0%, var(--bg-panel) 50%, var(--bg-dark) 100%);
+      border-bottom: 2px solid var(--tesla-red);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 120px;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--neon-green);
+      animation: pulse 1.5s infinite;
+    }
+
+    .live-dot.offline { background: #ff4444; animation: none; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--neon-green); }
+      50% { opacity: 0.5; box-shadow: 0 0 5px var(--neon-green); }
+    }
+
+    .marquee {
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      color: var(--tesla-red);
+    }
+
+    .marquee span {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Navigation */
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      border: 2px solid var(--pixel-border);
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-tab:hover {
+      border-color: var(--tesla-red);
+      color: var(--tesla-red);
+    }
+
+    .nav-tab.active {
+      background: var(--tesla-red);
+      border-color: var(--tesla-red);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-panel {
+      background: var(--bg-panel);
+      border: 2px solid var(--pixel-border);
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--tesla-red);
+    }
+
+    .stat-panel.glow-red::before { background: var(--tesla-red); box-shadow: 0 0 10px var(--tesla-red); }
+    .stat-panel.glow-blue::before { background: var(--electric-blue); box-shadow: 0 0 10px var(--electric-blue); }
+    .stat-panel.glow-green::before { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+    .stat-panel.glow-gold::before { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+    .stat-panel.glow-silver::before { background: var(--tesla-silver); box-shadow: 0 0 10px var(--tesla-silver); }
+
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-value.red { color: var(--tesla-red); text-shadow: 0 0 10px var(--tesla-red); }
+    .stat-value.blue { color: var(--electric-blue); text-shadow: 0 0 10px var(--electric-blue); }
+    .stat-value.green { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+    .stat-value.gold { color: var(--gold); text-shadow: 0 0 10px var(--gold); }
+    .stat-value.silver { color: var(--tesla-silver); text-shadow: 0 0 10px var(--tesla-silver); }
+
+    .stat-sub {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    /* Timer bar */
+    .timer-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--pixel-border);
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+
+    .timer-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--tesla-red), var(--gold));
+      transition: width 1s linear;
+    }
+
+    /* Terminal */
+    .terminal {
+      background: #0d0d0d;
+      border: 2px solid var(--pixel-border);
+      margin-top: 1rem;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--pixel-border);
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27ca40; }
+
+    .terminal-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-left: auto;
+    }
+
+    .log-feed {
+      padding: 1rem;
+      max-height: 300px;
+      overflow-y: auto;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    .log-entry {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .log-time { color: var(--text-dim); min-width: 70px; }
+    .log-type { min-width: 20px; }
+    .log-msg { flex: 1; word-break: break-word; }
+
+    .log-entry.swap .log-type { color: var(--electric-blue); }
+    .log-entry.airdrop .log-type { color: var(--neon-green); }
+    .log-entry.claim .log-type { color: var(--gold); }
+    .log-entry.error .log-type { color: var(--tesla-red); }
+    .log-entry.info .log-type { color: var(--tesla-silver); }
+
+    .log-entry a { color: var(--electric-blue); }
+
+    /* Docs Styles */
+    .docs-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .docs-section {
+      background: var(--bg-panel);
+      border: 2px solid var(--pixel-border);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--tesla-red);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--tesla-red);
+    }
+
+    .docs-subtitle {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
+    }
+
+    .docs-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .docs-code {
+      background: #0a0a0a;
+      border: 1px solid var(--tesla-red);
+      padding: 1.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      white-space: pre-line;
+      color: var(--neon-green);
+      margin-bottom: 1rem;
+    }
+
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .docs-table th, .docs-table td {
+      border: 1px solid var(--pixel-border);
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .docs-table th {
+      background: var(--tesla-red);
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .highlight-box {
+      background: rgba(232, 33, 39, 0.1);
+      border: 2px solid var(--tesla-red);
+      padding: 1rem;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .docs-list {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .docs-list li {
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .docs-list li::before {
+      content: '>';
+      color: var(--tesla-red);
+      position: absolute;
+      left: -1rem;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-q {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--electric-blue);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-a {
+      color: var(--text);
+      font-size: 1rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--tesla-red);
+    }
+
+    /* Boot Screen */
+    .boot-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+
+    .boot-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .boot-text {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      color: var(--tesla-red);
+      text-align: center;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mascot-zone {
+        flex-direction: column-reverse;
+      }
+      .speech-bubble::after {
+        display: none;
+      }
+      .logo {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Boot Screen -->
+  <div class="boot-screen" id="bootScreen">
+    <div class="boot-text">
+      INITIALIZING ELON PROTOCOLS...<br><br>
+      LOADING TESLA VAULT...<br><br>
+      ████████████████ 100%<br><br>
+      PRESS ANY KEY TO CONTINUE_
+    </div>
+  </div>
+
+  <!-- Background Effects -->
+  <div class="cyber-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="status-left">
+      <div class="live-dot" id="liveDot"></div>
+      <span id="statusText">CONNECTING...</span>
+    </div>
+    <div class="marquee">
+      <span>★ STRATEGIC ELON RESERVE ★ ELON'S SHADOW VAULT ON SOLANA ★ STACK TSLAx AUTOMATICALLY ★ $SER TO THE MOON ★ AIRDROP EVERY 10 MIN ★</span>
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: 50px;">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        [ <span>$SER</span> ] STRATEGIC ELON RESERVE
+      </div>
+      <p class="tagline">// AUTOMATED $TSLAx DISTRIBUTION PROTOCOL //</p>
+
+      <div class="header-links">
+        <span class="ca-link" id="caLink">CA: <span id="caAddress">LAUNCHING SOON</span></span>
+        <a href="https://x.com/SER_Reserve" target="_blank" class="x-link" id="xLink">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+      <button class="nav-tab" data-tab="how-it-works">How It Works</button>
+      <button class="nav-tab" data-tab="the-play">The Play</button>
+      <button class="nav-tab" data-tab="faq">FAQ</button>
+    </nav>
+
+    <!-- Dashboard Tab -->
+    <div class="tab-content active" id="tab-dashboard">
+
+    <!-- Mascot Zone - Rocket with Speech Bubble -->
+    <section class="mascot-zone" id="mascotZone">
+      <div class="speech-bubble" id="speechBubble">
+        INITIALIZING TESLA VAULT...
+      </div>
+
+      <div class="pixel-rocket idle" id="pixelRocket">
+        <div class="rocket-sprite">🚀</div>
+      </div>
+    </section>
+
+    <!-- Market Stats -->
+    <div class="stats-grid" style="margin-bottom: 0.5rem;">
+      <div class="stat-panel glow-green" style="grid-column: span 2;">
+        <div class="stat-label">📈 $SER MARKET CAP</div>
+        <div class="stat-value green" id="marketCap" style="font-size: 3.5rem;">$0</div>
+        <div class="stat-sub" id="phase">PRE-LAUNCH</div>
+      </div>
+
+      <div class="stat-panel glow-blue">
+        <div class="stat-label">💵 PRICE</div>
+        <div class="stat-value blue" id="price">$0.00000000</div>
+        <div class="stat-sub">per $SER</div>
+      </div>
+
+      <div class="stat-panel glow-gold">
+        <div class="stat-label">📊 24H VOLUME</div>
+        <div class="stat-value gold" id="volume">$0</div>
+        <div class="stat-sub">trading volume</div>
+      </div>
+    </div>
+
+    <!-- Treasury & Airdrop Stats -->
+    <div class="stats-grid">
+      <div class="stat-panel glow-gold">
+        <div class="stat-label">💰 TREASURY SOL</div>
+        <div class="stat-value gold" id="treasurySol">0.0000</div>
+        <div class="stat-sub">pending swap</div>
+      </div>
+
+      <div class="stat-panel glow-blue">
+        <div class="stat-label">🚗 TREASURY $TSLAx</div>
+        <div class="stat-value blue" id="treasuryPenguin">0</div>
+        <div class="stat-sub">ready to drop</div>
+      </div>
+
+      <div class="stat-panel glow-red">
+        <div class="stat-label">👥 ELIGIBLE HOLDERS</div>
+        <div class="stat-value red" id="eligibleHolders">0</div>
+        <div class="stat-sub" id="holdersSub">≥100K $SER</div>
+      </div>
+
+      <div class="stat-panel glow-green">
+        <div class="stat-label">🎉 TOTAL AIRDROPS</div>
+        <div class="stat-value green" id="totalAirdrops">0</div>
+        <div class="stat-sub" id="totalDistributed">0 $TSLAx sent</div>
+      </div>
+
+      <div class="stat-panel glow-silver">
+        <div class="stat-label">💰 SOL USED</div>
+        <div class="stat-value silver" id="totalSolSwapped">0.00</div>
+        <div class="stat-sub">for $TSLAx airdrops</div>
+      </div>
+
+      <div class="stat-panel glow-red">
+        <div class="stat-label">📊 LAST DROP</div>
+        <div class="stat-value red" id="lastAirdrop">--:--</div>
+        <div class="stat-sub" id="lastAirdropInfo">waiting...</div>
+      </div>
+
+      <div class="stat-panel glow-blue">
+        <div class="stat-label">⏰ NEXT AIRDROP</div>
+        <div class="stat-value blue" id="countdown">--:--</div>
+        <div class="timer-bar">
+          <div class="timer-fill" id="timerFill" style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal -->
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+        <div class="terminal-title">[TESLA_VAULT_LOG.exe]</div>
+      </div>
+      <div class="log-feed" id="logFeed">
+        <div class="log-entry info">
+          <span class="log-time">--:--:--</span>
+          <span class="log-type">></span>
+          <span class="log-msg">Connecting to Elon's shadow vault...</span>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- End Dashboard Tab -->
+
+    <!-- How It Works Tab -->
+    <div class="tab-content" id="tab-how-it-works">
+      <div class="docs-container">
+        <div class="docs-section">
+          <h1 class="docs-title">THE FLYWHEEL</h1>
+          <div class="docs-code">You buy $SER
+      ↓
+People trade $SER
+      ↓
+Creator fees generated
+      ↓
+70% buys $TSLAx automatically
+      ↓
+$TSLAx lands in your wallet every 10 min</div>
+          <p class="docs-text">That's it. No staking. No claiming. Stack Tesla like Elon intended.</p>
+        </div>
+
+        <div class="docs-section">
+          <h2 class="docs-subtitle">THE SPLIT</h2>
+          <p class="docs-text">Every $SER trade generates creator fees:</p>
+          <table class="docs-table">
+            <tr>
+              <th>Split</th>
+              <th>Use</th>
+            </tr>
+            <tr>
+              <td><strong>70%</strong></td>
+              <td>Swapped to $TSLAx → Airdropped to holders</td>
+            </tr>
+            <tr>
+              <td><strong>30%</strong></td>
+              <td>Keeps the flywheel running (reserved)</td>
+            </tr>
+          </table>
+          <p class="docs-text">More volume = more $TSLAx = bigger Tesla bags for everyone holding</p>
+        </div>
+
+        <div class="docs-section">
+          <h2 class="docs-subtitle">MINIMUM TO QUALIFY</h2>
+          <div class="highlight-box">
+            <p class="docs-text"><strong>100,000 $SER</strong></p>
+          </div>
+          <p class="docs-text">Hold 100k+ and $TSLAx airdrops hit your wallet automatically every 10 minutes.</p>
+        </div>
+
+        <div class="docs-section">
+          <h2 class="docs-subtitle">SOLD? NO STRESS</h2>
+          <p class="docs-text">The bot checks holdings before each airdrop.</p>
+          <p class="docs-text">Sold your $SER? You'll miss that cycle and your share goes to diamond hands.</p>
+          <p class="docs-text">But no permanent blacklist. Buy back 100k+, and you're back in the next cycle stacking $TSLAx again.</p>
+          <p class="docs-text"><strong>We've all papered before. Just get back in the reserve.</strong></p>
+        </div>
+      </div>
+    </div><!-- End How It Works Tab -->
+
+    <!-- The Play Tab -->
+    <div class="tab-content" id="tab-the-play">
+      <div class="docs-container">
+        <div class="docs-section">
+          <h1 class="docs-title">WHY NOT JUST BUY TSLAx?</h1>
+          <p class="docs-text">Be honest with yourself ser.</p>
+          <p class="docs-text">You saw $TSLAx. You thought about buying. You hesitated. It pumped. Now you're posting cope.</p>
+          <p class="docs-text">We get it. We've all been there.</p>
+          <div class="highlight-box">
+            <p class="docs-text"><strong>$SER fixes this.</strong></p>
+          </div>
+        </div>
+
+        <div class="docs-section">
+          <h2 class="docs-subtitle">DOUBLE EXPOSURE</h2>
+          <table class="docs-table">
+            <tr>
+              <th>What you get</th>
+              <th>How</th>
+            </tr>
+            <tr>
+              <td>$SER price action</td>
+              <td>You hold the token, it pumps, you win</td>
+            </tr>
+            <tr>
+              <td>FREE $TSLAx</td>
+              <td>Airdropped every 10 min just for holding</td>
+            </tr>
+            <tr>
+              <td>Double exposure</td>
+              <td>$SER moons + $TSLAx moons = you moon twice</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="docs-section">
+          <h2 class="docs-subtitle">THE ELON IDEOLOGY</h2>
+          <p class="docs-text">We're not just memes. We're backing Papa Elon for real.</p>
+          <p class="docs-text">Fees fuel Tesla. Holders get a piece. WAGMI aligned with the king.</p>
+          <p class="docs-text">$TSLAx tracks actual TSLA shares (~$430). Real tokenized Tesla stock on Solana.</p>
+        </div>
+
+        <div class="docs-section">
+          <h2 class="docs-subtitle">TLDR</h2>
+          <ul class="docs-list">
+            <li>$TSLAx is tokenized Tesla (real price exposure)</li>
+            <li>You'll paper it if you buy directly (be honest)</li>
+            <li>$SER = chill way to stack $TSLAx</li>
+            <li>Hold $SER → get price action → get free Tesla exposure</li>
+            <li>Double exposure, zero stress, Elon approved vibes</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End The Play Tab -->
+
+    <!-- FAQ Tab -->
+    <div class="tab-content" id="tab-faq">
+      <div class="docs-container">
+        <div class="docs-section">
+          <h1 class="docs-title">FAQ</h1>
+
+          <div class="faq-item">
+            <div class="faq-q">wen airdrop?</div>
+            <div class="faq-a">Every 10 minutes. Set a timer if you want but it just happens.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">how much $TSLAx will I get?</div>
+            <div class="faq-a">Depends on volume and how much $SER you hold. More $SER = bigger share.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">do I need to claim?</div>
+            <div class="faq-a">No. It hits your wallet automatically. Just hold $SER and chill.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">what's the minimum?</div>
+            <div class="faq-a">100,000 $SER to qualify for airdrops.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">what is $TSLAx?</div>
+            <div class="faq-a">TSLAx is tokenized Tesla stock on Solana. Tracks actual TSLA share price (~$430). Real exposure to Tesla.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">why would I buy this instead of just $TSLAx?</div>
+            <div class="faq-a">Because $SER forces you to accumulate without your shaky hands getting in the way. You literally can't paper the $TSLAx because it just keeps showing up.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">what if I sell and want back in?</div>
+            <div class="faq-a">No problem. Buy back 100k+ $SER and you're eligible for the next airdrop cycle. No permanent bans.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">is this endorsed by Elon?</div>
+            <div class="faq-a">Lol no. But we're building his shadow vault anyway. Elon energy only.</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End FAQ Tab -->
+
+  </div><!-- End Container -->
+
+  <script>
+    // Boot sequence
+    document.addEventListener('keydown', () => {
+      document.getElementById('bootScreen').classList.add('hidden');
+    });
+    document.addEventListener('click', () => {
+      document.getElementById('bootScreen').classList.add('hidden');
+    });
+    setTimeout(() => {
+      document.getElementById('bootScreen').classList.add('hidden');
+    }, 2500);
+
+    // Tab Navigation
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Copy CA
+    document.getElementById('caLink').addEventListener('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      const ca = document.getElementById('caAddress').textContent;
+      if (ca === 'LAUNCHING SOON') return;
+
+      const textarea = document.createElement('textarea');
+      textarea.value = ca;
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+        const link = document.getElementById('caLink');
+        link.classList.add('copied');
+        const originalText = link.innerHTML;
+        link.innerHTML = 'COPIED! ✓';
+        setTimeout(() => {
+          link.innerHTML = originalText;
+          link.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        console.error('Copy failed:', err);
+      }
+
+      document.body.removeChild(textarea);
+    });
+
+    // WebSocket
+    let ws;
+    let reconnectAttempts = 0;
+
+    function connect() {
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const host = window.location.host;
+      ws = new WebSocket(`${protocol}//${host}`);
+
+      ws.onopen = () => {
+        document.getElementById('liveDot').classList.remove('offline');
+        document.getElementById('statusText').textContent = 'LIVE';
+        reconnectAttempts = 0;
+      };
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        handleMessage(data);
+      };
+
+      ws.onclose = () => {
+        document.getElementById('liveDot').classList.add('offline');
+        document.getElementById('statusText').textContent = 'OFFLINE';
+        if (reconnectAttempts < 10) {
+          reconnectAttempts++;
+          setTimeout(connect, 2000);
+        }
+      };
+    }
+
+    function handleMessage(data) {
+      switch (data.type) {
+        case 'status': updateFullStatus(data.data); break;
+        case 'thought': updateThought(data.data.thought); break;
+        case 'treasury': updateTreasury(data.data); break;
+        case 'holders': updateHolders(data.data); break;
+        case 'activity': addLog(data.data); break;
+        case 'nextAirdrop': updateCountdown(data.data.timestamp); break;
+        case 'market': updateMarket(data.data); break;
+      }
+    }
+
+    function updateMarket(d) {
+      document.getElementById('marketCap').textContent = formatMarketCap(d.marketCap);
+      document.getElementById('phase').textContent = d.phase || 'PRE-LAUNCH';
+      document.getElementById('price').textContent = formatPrice(d.price);
+      document.getElementById('volume').textContent = '$' + d.volume24h.toLocaleString();
+    }
+
+    function formatPrice(price) {
+      if (price === 0) return '$0.00';
+      if (price < 0.00000001) return '$' + price.toExponential(2);
+      if (price < 0.0001) return '$' + price.toFixed(8);
+      if (price < 0.01) return '$' + price.toFixed(6);
+      if (price < 1) return '$' + price.toFixed(4);
+      return '$' + price.toFixed(2);
+    }
+
+    function formatMarketCap(mc) {
+      if (mc >= 1000000) return '$' + (mc / 1000000).toFixed(2) + 'M';
+      if (mc >= 1000) return '$' + (mc / 1000).toFixed(1) + 'K';
+      return '$' + mc.toFixed(0);
+    }
+
+    function updateFullStatus(s) {
+      updateRocketMood(s.mood);
+      updateThought(s.thought);
+      updateTreasury({ sol: s.treasurySol, penguin: s.treasuryPenguin });
+      updateHolders({ eligible: s.eligibleHolders, total: s.totalHolders });
+
+      if (s.marketCap !== undefined) {
+        document.getElementById('marketCap').textContent = formatMarketCap(s.marketCap);
+        document.getElementById('phase').textContent = s.phase || 'PRE-LAUNCH';
+      }
+      if (s.price !== undefined) {
+        document.getElementById('price').textContent = formatPrice(s.price);
+      }
+      if (s.volume24h !== undefined) {
+        document.getElementById('volume').textContent = '$' + s.volume24h.toLocaleString();
+      }
+
+      document.getElementById('totalAirdrops').textContent = s.totalAirdrops;
+      document.getElementById('totalDistributed').textContent = `${s.totalPenguinDistributed.toLocaleString()} $TSLAx sent`;
+      document.getElementById('totalSolSwapped').textContent = (s.totalSolSwapped || 0).toFixed(2);
+
+      if (s.lastAirdropTime) {
+        document.getElementById('lastAirdrop').textContent = formatTime(new Date(s.lastAirdropTime));
+        document.getElementById('lastAirdropInfo').textContent = `${s.lastAirdropAmount.toLocaleString()} → ${s.lastAirdropRecipients}`;
+      }
+
+      if (s.nextAirdropTime) updateCountdown(s.nextAirdropTime);
+
+      if (s.recentActivity?.length) {
+        document.getElementById('logFeed').innerHTML = '';
+        s.recentActivity.slice(0, 10).forEach(a => addLog(a, false));
+      }
+    }
+
+    function updateRocketMood(mood) {
+      const rocket = document.getElementById('pixelRocket');
+      rocket.classList.remove('idle', 'cooking', 'airdropping', 'counting', 'celebrating', 'error');
+
+      const moodMap = {
+        'idle': 'idle',
+        'waiting': 'idle',
+        'cooking': 'cooking',
+        'buying': 'cooking',
+        'airdropping': 'airdropping',
+        'counting': 'counting',
+        'celebrating': 'celebrating',
+        'error': 'error'
+      };
+
+      rocket.classList.add(moodMap[mood] || 'idle');
+    }
+
+    function updateThought(thought) {
+      const bubble = document.getElementById('speechBubble');
+      bubble.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        bubble.textContent = thought;
+        bubble.style.transform = 'scale(1)';
+      }, 100);
+    }
+
+    function updateTreasury(d) {
+      document.getElementById('treasurySol').textContent = d.sol.toFixed(4);
+      document.getElementById('treasuryPenguin').textContent = d.penguin.toLocaleString();
+    }
+
+    function updateHolders(d) {
+      document.getElementById('eligibleHolders').textContent = d.eligible;
+      document.getElementById('holdersSub').textContent = `${d.total} total`;
+    }
+
+    let countdownInterval;
+    let countdownTarget;
+
+    function updateCountdown(target) {
+      countdownTarget = target;
+      if (countdownInterval) clearInterval(countdownInterval);
+
+      function tick() {
+        const now = Date.now();
+        const diff = countdownTarget - now;
+        const total = 10 * 60 * 1000;
+
+        if (diff <= 0) {
+          document.getElementById('countdown').textContent = 'NOW!';
+          document.getElementById('timerFill').style.width = '0%';
+          return;
+        }
+
+        const min = Math.floor(diff / 60000);
+        const sec = Math.floor((diff % 60000) / 1000);
+        document.getElementById('countdown').textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        document.getElementById('timerFill').style.width = `${(diff / total) * 100}%`;
+      }
+
+      tick();
+      countdownInterval = setInterval(tick, 1000);
+    }
+
+    function addLog(activity, prepend = true) {
+      const feed = document.getElementById('logFeed');
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${activity.type}`;
+
+      const time = formatTime(new Date(activity.timestamp));
+      const icons = { swap: '⚡', airdrop: '🚀', claim: '💰', error: '❌', info: '>' };
+
+      let msg = activity.message;
+      if (activity.txSignature) {
+        msg += ` <a href="https://solscan.io/tx/${activity.txSignature}" target="_blank">[TX]</a>`;
+      }
+
+      entry.innerHTML = `
+        <span class="log-time">${time}</span>
+        <span class="log-type">${icons[activity.type] || '>'}</span>
+        <span class="log-msg">${msg}</span>
+      `;
+
+      if (prepend) {
+        feed.insertBefore(entry, feed.firstChild);
+        while (feed.children.length > 10) feed.removeChild(feed.lastChild);
+      } else {
+        feed.appendChild(entry);
+      }
+    }
+
+    function formatTime(date) {
+      return date.toTimeString().slice(0, 8);
+    }
+
+    // Connect WebSocket
+    connect();
+  </script>
+</body>
+</html>
