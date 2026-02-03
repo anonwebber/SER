@@ -25,6 +25,7 @@ export const CONFIG = {
   minSolToSwap: Number(process.env.MIN_SOL_TO_SWAP) || 0.1,
 
   // Jupiter settings
+  jupiterApiKey: process.env.JUPITER_API_KEY || '',
   slippageBps: 300, // 3% slippage
 };
 

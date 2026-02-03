@@ -12,7 +12,6 @@ import { statusBroadcaster } from './status.js';
 // Jupiter API for graduated tokens (authenticated endpoint)
 const JUPITER_QUOTE_API = 'https://api.jup.ag/swap/v1/quote';
 const JUPITER_SWAP_API = 'https://api.jup.ag/swap/v1/swap';
-const JUPITER_API_KEY = process.env.JUPITER_API_KEY || '2297f1bd-5700-4805-914f-4025d34abd95';
 
 // Native SOL mint
 const SOL_MINT = 'So11111111111111111111111111111111111111112';
@@ -75,6 +74,11 @@ export async function swapSolToTslax(
   solAmount: number
 ): Promise<SwapResult> {
   try {
+    // Check for Jupiter API key
+    if (!CONFIG.jupiterApiKey) {
+      throw new Error('JUPITER_API_KEY not configured - required for swaps');
+    }
+
     statusBroadcaster.updateMood('buying');
     statusBroadcaster.addActivity('info', `🔄 Starting swap: ${solAmount.toFixed(4)} SOL → TSLAx`);
 
@@ -87,7 +91,7 @@ export async function swapSolToTslax(
     statusBroadcaster.addActivity('info', `📊 Getting Jupiter quote...`);
 
     const quoteData = await httpsRequest(quoteUrl, {
-      headers: { 'x-api-key': JUPITER_API_KEY },
+      headers: { 'x-api-key': CONFIG.jupiterApiKey },
     });
 
     if (!quoteData || quoteData.error) {
@@ -100,7 +104,7 @@ export async function swapSolToTslax(
     // Step 2: Get swap transaction
     const swapData = await httpsRequest(JUPITER_SWAP_API, {
       method: 'POST',
-      headers: { 'x-api-key': JUPITER_API_KEY },
+      headers: { 'x-api-key': CONFIG.jupiterApiKey },
       body: JSON.stringify({
         quoteResponse: quoteData,
         userPublicKey: wallet.publicKey.toString(),
